@@ -199,12 +199,12 @@ export function astar(
   let { c: ec, r: er } = toCell(ex, ey);
   const startFree = findFree(sc, sr);
   const endFree = findFree(ec, er);
-  if (!startFree || !endFree) return [{ x: ex, y: ey }];
+  if (!startFree || !endFree) return [];
   sc = startFree.c;
   sr = startFree.r;
   ec = endFree.c;
   er = endFree.r;
-  if (sc === ec && sr === er) return [{ x: ex, y: ey }];
+  if (sc === ec && sr === er) return [];
 
   const nodeCount = GRID_COLS * GRID_ROWS;
   const gCost = new Float32Array(nodeCount).fill(Infinity);
@@ -312,7 +312,7 @@ export function astar(
     }
   }
 
-  return [{ x: ex, y: ey }];
+  return [];
 }
 
 export const getDeskLocations = (items: FurnitureItem[]) =>
